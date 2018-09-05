@@ -2,6 +2,7 @@
 
 #include "utils/app_settings.h"
 #include "utils/logger.h"
+#include "utils/numbers.h"
 
 namespace utils {
 AppSettings::AppSettings() : options_description_("Ini")
@@ -23,11 +24,11 @@ void AppSettings::DebulLogAllProperties(
     utils::Stringstream debug_string;
     debug_string << "Property : " << pair.first.c_str();
     auto& value = pair.second.value();
-    if (auto v = boost::any_cast<utils::UInt>(&value)) {
+    if (auto v = boost::any_cast<UInt>(&value)) {
       debug_string << "= " << *v;
     } else if (auto v = boost::any_cast<utils::String>(&value)) {
       debug_string << "= " << (v->c_str());
-    } else if (auto v = boost::any_cast<utils::Float>(&value)) {
+    } else if (auto v = boost::any_cast<Float>(&value)) {
       debug_string << "= " << *v;
     }
     LOG_DEBUG(debug_string.str());

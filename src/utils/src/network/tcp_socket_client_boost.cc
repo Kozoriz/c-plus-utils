@@ -13,9 +13,9 @@ using namespace boost::asio::ip;
 
 namespace {
 // TODO use profile
-const utils::UInt max_buffer_size = 5u;
+const UInt max_buffer_size = 5u;
 // TODO use profile
-const utils::UInt connect_waiting_timeout_ms = 5000u;
+const UInt connect_waiting_timeout_ms = 5000u;
 }
 
 TcpSocketClient::TcpSocketClient(const utils::String& address, const UInt port)

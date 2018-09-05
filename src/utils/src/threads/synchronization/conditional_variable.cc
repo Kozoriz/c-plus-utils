@@ -9,7 +9,7 @@ void ConditionalVariable::Wait(Lock& lock) {
 }
 
 ConditionalVariable::ExitState ConditionalVariable::WaitFor(
-    Lock& lock, const utils::UInt milliseconds) {
+    Lock& lock, const UInt milliseconds) {
   std::unique_lock<std::mutex> std_unq_lock(lock.std_mutex_);
   if (std::cv_status::no_timeout ==
       std_cond_var_.wait_for(std_unq_lock,

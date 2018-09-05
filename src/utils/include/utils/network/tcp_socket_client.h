@@ -30,7 +30,7 @@ class TcpSocketClient : public SocketClient {
 
  private:
   const utils::String address_;
-  const utils::UInt port_;
+  const UInt port_;
   ByteArray buffer_;
   ClientMessageQueue messages_to_server_;
   ClientMessageQueue messages_from_server_;

@@ -28,7 +28,7 @@ class Matrix2 {
 
   const Matrix2& operator+=(const Matrix2& another_matrix);
 
-  utils::UInt Size() const;
+  UInt Size() const;
 
  private:
   ContainerType storage_;

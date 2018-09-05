@@ -29,7 +29,7 @@ class TestAsyncWaiter {
 
  private:
   bool notified_;
-  utils::UInt count_;
+  UInt count_;
   utils::synchronization::Lock lock_;
   utils::synchronization::ConditionalVariable cond_var_;
 };

@@ -19,7 +19,7 @@ typedef MessageQueue<ByteArray> ServerMessageQueue;
 
 class TcpSocketServer : public SocketServer {
  public:
-  TcpSocketServer(const utils::UInt16 port);
+  TcpSocketServer(const UInt16 port);
   ~TcpSocketServer();
   void Send(const ByteArray& message) override;
   ByteArray Receive() override;
@@ -51,7 +51,7 @@ class TcpSocketServer : public SocketServer {
   };
 
  private:
-  const utils::UInt16 port_;
+  const UInt16 port_;
   SharedPtr<ClientSession> client_;
 
   boost::asio::io_service boost_io_service_;

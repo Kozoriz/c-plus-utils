@@ -11,7 +11,7 @@ class ConditionalVariable {
   enum class ExitState { kNoTimeout, kTimeout };
 
   void Wait(Lock& lock);
-  ExitState WaitFor(Lock& lock, const utils::UInt milliseconds);
+  ExitState WaitFor(Lock& lock, const UInt milliseconds);
   void NotifyOne();
   void Broadcast();
 

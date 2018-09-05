@@ -12,9 +12,9 @@ namespace utils {
 
 namespace {
 // TODO use profile
-const utils::UInt max_buffer_size = 5u;
+const UInt max_buffer_size = 5u;
 // TODO use profile
-const utils::UInt connect_waiting_timeout_ms = 5000u;
+const UInt connect_waiting_timeout_ms = 5000u;
 }  // namespace
 
 using namespace boost::asio::ip;

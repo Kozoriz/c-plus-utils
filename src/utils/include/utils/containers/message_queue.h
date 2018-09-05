@@ -10,7 +10,7 @@ namespace utils {
 
 namespace {
 // TODO use profiler
-const utils::UInt new_messages_wait_default_timeout = 10u;
+const UInt new_messages_wait_default_timeout = 10u;
 }
 
 template <typename MessageType>

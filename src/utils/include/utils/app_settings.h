@@ -11,7 +11,7 @@ namespace utils {
 class AppSettings {
 public:
   AppSettings();
-  void DebulLogAllProperties(const boost::program_options::variables_map& boost_var_map) final;
+  void DebulLogAllProperties(const boost::program_options::variables_map& boost_var_map);
 
 protected:
   void LoadIniFile(const String& ini_file_path);
@@ -21,8 +21,9 @@ protected:
                T& variable,
                const std::string& help_description = "");
 
-private:
-  boost::program_options::options_description options_description_("Ini");
+  void ProcessIniFile(const String& ini_file);
 
+private:
+  boost::program_options::options_description options_description_;
 };  // class AppSettings
 }  // namespace utils 

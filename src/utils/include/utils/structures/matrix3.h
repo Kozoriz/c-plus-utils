@@ -27,7 +27,7 @@ class Matrix3 {
   Matrix3& operator+=(const Matrix3& another_matrix);
   Matrix3 operator+(const Matrix3& another_matrix);
 
-  utils::UInt Size() const;
+  UInt Size() const;
   void Clear();
 
   ContainerType::const_iterator begin() const;
