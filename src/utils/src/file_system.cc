@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "utils/logger.h"
+#include "utils/containers/converters.h"
 
 CREATE_LOGGER("Utils")
 

@@ -22,10 +22,20 @@ struct Location2 {
   }
 };
 
-struct Location3 {
-  Int x_ = 0;
-  Int y_ = 0;
-  Int z_ = 0;
+class Location3 {
+public:
+  Int x_;
+  Int y_;
+  Int z_;
+
+  Location3() : x_(0), y_(0), z_(0){}
+
+  Location3(const Location3& other)
+  {
+    x_ = other.x_;
+    y_ = other.y_;
+    z_ = other.z_;
+  }
 
   bool operator==(const Location3& other) const {
     return other.x_ == x_ && other.y_ == y_ && other.z_ == z_;

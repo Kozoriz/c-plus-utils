@@ -58,6 +58,11 @@ file(GLOB SOURCES
   src/*/*.cc
   src/*/*/*.cc)
 
+file(GLOB HEADERS
+  src/*.h
+  src/*/*.h
+  src/*/*/*.h)
+
 set(LIBRARIES
     ${Boost_LIBRARIES}
 )
@@ -66,6 +71,6 @@ if(ENABLE_LOG)
   list(APPEND LIBRARIES log4cplus -L${LOG4CPLUS_LIB_DIR})
 endif()
 
-add_library("Utils" ${SOURCES})
+add_library("Utils" ${SOURCES} ${HEADERS})
 target_link_libraries("Utils" ${LIBRARIES})
 

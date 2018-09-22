@@ -4,6 +4,7 @@
 #include "utils/network/tcp_socket_client.h"
 #include "utils/threads/synchronization/conditional_variable.h"
 
+#include "utils/containers/converters.h"
 #include "utils/logger.h"
 
 CREATE_LOGGER("Utils")
