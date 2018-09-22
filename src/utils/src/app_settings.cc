@@ -4,6 +4,8 @@
 #include "utils/logger.h"
 #include "utils/numbers.h"
 
+CREATE_LOGGER("AppSettings")
+
 namespace utils {
 AppSettings::AppSettings() : options_description_("Ini")
 {}

@@ -6,6 +6,7 @@ set(Boost_USE_MULTITHREADED ON)
 
 find_package(Boost 1.62 COMPONENTS program_options system thread)
 
+option(ENABLE_LOG "If logging needed" ON)
 
 ### LOGGER (log4cplus)
 if (ENABLE_LOG)
