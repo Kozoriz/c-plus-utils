@@ -6,20 +6,9 @@
 
 namespace utils
 {
-  Vector<String> SplitCSV(const String& str, const String& delim)
-  {
-    Vector<String> splited;
-    Int pos = 0;
-    Int pos2 = 0;
-    while((pos2 = str.find(delim, pos)) != String::npos)
-    {
-      splited.push_back(str.substr(pos, pos2 - pos));
-      pos = pos2 + 1;
-    }
-    splited.push_back(str.substr(pos));
-    return splited;
-  }
+  Vector<String> SplitCSV(const String& str, const String& delim);
 
+namespace  {
   template <typename Type>
   String ConvertToString(Type value) {
     return std::to_string(value);
@@ -61,5 +50,5 @@ namespace utils
     return point;
   }
 
-
+} // namespace
 } // namespace utils
