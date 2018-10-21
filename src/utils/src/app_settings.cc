@@ -10,15 +10,6 @@ namespace utils {
 AppSettings::AppSettings() : options_description_("Ini")
 {}
 
-template <class T>
-void AppSettings::AddOption(const std::string& option_name,
-               T& variable,
-               const std::string& help_description ) {
-  options_description_.add_options()(option_name.c_str(),
-                                    boost::program_options::value<T>(&variable),
-                                    help_description.c_str());
-}
-
 void AppSettings::DebulLogAllProperties(
     const boost::program_options::variables_map& boost_var_map) {
   LOG_DEBUG("Properties read : " << boost_var_map.size());

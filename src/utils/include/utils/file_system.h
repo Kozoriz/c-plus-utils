@@ -37,6 +37,8 @@ class File : public TreeElement {
   String ReadLine();
   void WriteLine(const String& string);
   bool IsOpened() const;
+  String GetExt();
+  bool IsEof() const;
 
   static bool IsExists(const String& path);
   static String GetFileName(const String& path);
@@ -47,7 +49,7 @@ class File : public TreeElement {
   Type GetType() const override;
  private:
   OpenMode mode_;
-  std::fstream std_file_stream_;
+  std::unique_ptr<std::fstream> std_file_stream_;
 }; // class File
 
 class Directory : public TreeElement
@@ -62,6 +64,8 @@ public:
 private:
   utils::Vector<TreeElement*> m_child_list;
 }; // class Directory
+
+utils::String ExtendPath(const utils::String& path, const utils::String& add);
 
 }  // namespace file_system
 }  // namespace utils

@@ -1,3 +1,4 @@
+set(CMAKE_CXX_STANDARD 14)
 
 ### BOOST (1.62 min)
 

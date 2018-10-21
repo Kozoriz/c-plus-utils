@@ -42,7 +42,8 @@ namespace  {
   positions::Location3 convertTo(const String& str)
   {
     positions::Location3 point;
-    Vector<String> splited = SplitCSV(str, " ");
+    Vector<String> splited = SplitCSV(str, ",");
+    if(3 > splited.size()) return point;
     point.x_ = convertTo<Int>(splited[0]);
     point.y_ = convertTo<Int>(splited[1]);
     point.z_ = convertTo<Int>(splited[2]);
