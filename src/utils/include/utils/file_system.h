@@ -4,6 +4,7 @@
 
 #include "utils/containers/vector.h"
 #include "utils/containers/string.h"
+#include <memory>
 
 namespace utils {
 namespace file_system {
@@ -61,11 +62,23 @@ public:
 
   Type GetType() const override;
 
+  static void Create(const String& path);
+  static void RecursiveCreate(const String& path);
+
 private:
   utils::Vector<TreeElement*> m_child_list;
 }; // class Directory
 
-utils::String ExtendPath(const utils::String& path, const utils::String& add);
+namespace
+{
+utils::String ExtendPath(const utils::String path){return path;}
+template<class... Args>
+utils::String ExtendPath(const utils::String path, Args... args)
+{
+  return path + "/" + ExtendPath(args...);
+}
+}  // namespace
+
 
 }  // namespace file_system
 }  // namespace utils

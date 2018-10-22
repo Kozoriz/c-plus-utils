@@ -31,8 +31,8 @@ struct LogLocation {
       , function_name_(function_name)
       , line_number_(line_number) {}
 
-  const char* file_name_;
-  const char* function_name_;
+  const utils::String file_name_;
+  const utils::String function_name_;
   unsigned long line_number_;
 };
 

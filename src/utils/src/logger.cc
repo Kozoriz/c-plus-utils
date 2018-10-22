@@ -55,9 +55,9 @@ void Logger::PushLog(const LoggerType& logger,
   log4cplus::detail::macro_forced_log(logger,
                                       GetLog4cplusLevel(level),
                                       LOG4CPLUS_TEXT(entry),
-                                      location.file_name_,
+                                      location.file_name_.c_str(),
                                       location.line_number_,
-                                      location.function_name_);
+                                      location.function_name_.c_str());
 }
 #else
 void Logger::InitLogger(const std::string& ini_file_name) {}
