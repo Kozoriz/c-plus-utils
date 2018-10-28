@@ -10,4 +10,5 @@ namespace utils {
  */
 typedef std::string String;
 typedef std::stringstream Stringstream;
+typedef std::ostream Ostream;
 }

@@ -37,6 +37,8 @@ public:
     z_ = other.z_;
   }
 
+  Location3(int x, int y, int z) : x_(x), y_(y), z_(z) {}
+
   bool operator==(const Location3& other) const {
     return other.x_ == x_ && other.y_ == y_ && other.z_ == z_;
   }
@@ -54,5 +56,6 @@ public:
     return ss.str();
   }
 };
-}
-}
+
+}  // positions
+}  // utils
