@@ -4,15 +4,15 @@
 namespace utils {
 namespace structures {
 
-size_t Hash::operator()(const positions::Location3& pos) const {
-  Stringstream ss;
-  ss << "[" << pos.x_ << ", " << pos.y_ << ", " << pos.z_ << "]";
-  String value = ss.str();
-  return HashFunc<String>()(value);
-}
+//size_t Hash::operator()(const positions::Location3& pos) const {
+//  Stringstream ss;
+//  ss << "[" << pos.x_ << ", " << pos.y_ << ", " << pos.z_ << "]";
+//  String value = ss.str();
+//  return HashFunc<String>()(value);
+//}
 
 bool Matrix3::IsExists(const positions::Location3& pos) const {
-  return storage_.end() != storage_.find(pos);
+  return end() != find(pos);
 }
 
 bool Matrix3::IsExists(const UInt x, const UInt y, const UInt z) const {
@@ -24,7 +24,7 @@ bool Matrix3::IsExists(const UInt x, const UInt y, const UInt z) const {
 }
 
 void Matrix3::AddPoint(const positions::Location3& pos) {
-  storage_.insert(pos);
+  insert(pos);
 }
 
 void Matrix3::AddPoint(const UInt x, const UInt y, const UInt z) {
@@ -36,7 +36,7 @@ void Matrix3::AddPoint(const UInt x, const UInt y, const UInt z) {
 }
 
 void Matrix3::RemovePoint(const positions::Location3& pos) {
-  storage_.erase(pos);
+  erase(pos);
 }
 
 void Matrix3::RemovePoint(const UInt x, const UInt y, const UInt z) {
@@ -48,36 +48,20 @@ void Matrix3::RemovePoint(const UInt x, const UInt y, const UInt z) {
 }
 
 Matrix3& Matrix3::operator+=(const Matrix3& another_matrix) {
-  storage_.insert(another_matrix.storage_.begin(),
-                  another_matrix.storage_.end());
+  insert(another_matrix.begin(),
+         another_matrix.end());
   return *this;
 }
 
 Matrix3 Matrix3::operator+(const Matrix3& another_matrix) {
   Matrix3 temp;
-  for (auto point : this->storage_) {
+  for (auto point : *this) {
     temp.AddPoint(point);
   }
-  for (auto point : another_matrix.storage_) {
+  for (auto point : another_matrix) {
     temp.AddPoint(point);
   }
   return temp;
-}
-
-UInt Matrix3::Size() const {
-  return storage_.size();
-}
-
-void Matrix3::Clear() {
-  storage_.clear();
-}
-
-Matrix3::ContainerType::const_iterator Matrix3::begin() const {
-  return storage_.cbegin();
-}
-
-Matrix3::ContainerType::const_iterator Matrix3::end() const {
-  return storage_.cend();
 }
 
 }  // namespace structures

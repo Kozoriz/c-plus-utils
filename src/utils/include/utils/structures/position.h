@@ -42,6 +42,10 @@ public:
   bool operator==(const Location3& other) const {
     return other.x_ == x_ && other.y_ == y_ && other.z_ == z_;
   }
+
+  bool operator!=(const Location3& other) const {
+    return !(*this == other);
+  }
   Location3 operator+(const Location3& other) const {
     Location3 temp;
     temp.x_ = this->x_ + other.x_;

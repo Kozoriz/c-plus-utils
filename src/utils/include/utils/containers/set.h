@@ -3,7 +3,7 @@
 #include <unordered_set>
 
 namespace utils {
-template <typename Key, typename Hash>
+template <typename Key, typename Hash = std::hash<Key>>
 using UnorderedSet = std::unordered_set<Key, Hash>;
 
 template <typename HashableType>
