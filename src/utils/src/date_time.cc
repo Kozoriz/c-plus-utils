@@ -1,23 +1,25 @@
 #include "utils/date_time.h"
 
-#include <ctime>
+#include <chrono>
 
 namespace utils {
 namespace date_time {
-UInt32 GetTimeStamp() {
-  return std::time(nullptr);
+std::chrono::system_clock::time_point GetTimeStamp() {
+  return std::chrono::system_clock::now();
 }
 
-String GetDateTimeString(const String& format) {
-  time_t rawtime;
-  struct tm* timeinfo;
+String GetDateTimeString(const String& format, const std::chrono::system_clock::time_point& chrono_time) {
+  std::time_t time = std::chrono::system_clock::to_time_t(chrono_time);
+
   char buffer[80];
+  std::strftime(buffer, sizeof(buffer), format.c_str(), std::localtime(&time));
 
-  std::time(&rawtime);
-  timeinfo = std::localtime(&rawtime);
+  return String(buffer) + "," + std::to_string(std::chrono::duration_cast<std::chrono::milliseconds>(chrono_time.time_since_epoch()).count() % 1000);
+}
 
-  std::strftime(buffer, sizeof(buffer), format.c_str(), timeinfo);
-  return String(buffer);
+String GetDateTimeString(const String &format)
+{
+  return GetDateTimeString(format, GetTimeStamp());
 }
 
 }  // namespace date_time

@@ -23,6 +23,8 @@ void AppSettings::DebulLogAllProperties(
       debug_string << "= " << (v->c_str());
     } else if (auto v = boost::any_cast<Float>(&value)) {
       debug_string << "= " << *v;
+    } else if (auto v = boost::any_cast<int>(&value)) {
+      debug_string << "= " << *v;
     }
     LOG_DEBUG(debug_string.str());
   }

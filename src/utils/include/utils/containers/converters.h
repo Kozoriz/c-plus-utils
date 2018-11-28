@@ -39,7 +39,7 @@ namespace  {
   template<>
   Float convertTo(const String& str)
   {
-    return std::stof(str);
+    return std::stof(str.c_str());
   }
 
   template<>
@@ -57,28 +57,40 @@ namespace  {
 
 #ifdef PCL_INCLUDED
   template<>
-  String ConvertToString(pcl::PointXYZRGB& point)
+  String ConvertToString(pcl::PointXYZRGBL& point)
   {
     utils::Stringstream ss;
     ss << point.x << " " <<
           point.y << " " <<
           point.z << " " <<
-          point.rgb;
+          point.rgb << " " <<
+          point.label;
     return ss.str();
   }
-
   template<>
-  pcl::PointXYZRGB convertTo(const String& str)
+  pcl::PointXYZRGBL convertTo(const String& str)
   {
-    pcl::PointXYZRGB point(128,128,128);
+    pcl::PointXYZRGBL point(128,128,128,-1);
     Vector<String> splited = SplitCSV(str, ",");
     if(3 > splited.size()) return point;
-    point.x = convertTo<Float>(splited[0]);
-    point.y = convertTo<Float>(splited[1]);
-    point.z = convertTo<Float>(splited[2]);
+
+    std::string& xs = splited[0];
+//    std::replace(xs.begin(), xs.end(), '.', ',');
+    std::string& ys = splited[1];
+//    std::replace(ys.begin(), ys.end(), '.', ',');
+    std::string& zs = splited[2];
+//    std::replace(zs.begin(), zs.end(), '.', ',');
+
+    point.x = convertTo<Float>(xs);
+    point.y = convertTo<Float>(ys);
+    point.z = convertTo<Float>(zs);
     if(3 < splited.size())
     {
       point.rgb = convertTo<Float>(splited[3]);
+    }
+    if(4 < splited.size())
+    {
+      point.label = convertTo<uint32_t>(splited[4]);
     }
     return point;
   }
