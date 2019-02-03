@@ -120,7 +120,7 @@ class AutoTrace {
 
  private:
   const LoggerType& logger_;
-  const LogLocation& location_;
+  const LogLocation location_;
 };
 }  // namespace logger
 
